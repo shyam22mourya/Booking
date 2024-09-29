@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+
+  <%- include("../includes/filters.ejs") %>
+
+
+    <div class="row row-cols-lg-3  row-cols-md-3  row-cols-sm-1 mt-3">
+
+      <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="lising-link">
+          <div class="card col listing-card">
+            <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height:20rem">
+            <div class="card-img-overlay"></div>
+            <div class="card-body">
+              <!-- <h5 class="card-title">Card title</h5> -->
+
+              <p class="card-text">
+                <b>
+                  <%= listing.title %>
+                </b><br>
+
+                &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>
+                  <i class="tax-info"> &nbsp; &nbsp; + 18 % GST</i>
+              </p>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+        </a>
+
+        <% } %>
+
+    </div>
+
+
+    <script>
+      let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+      taxSwitch.addEventListener("click", () => {
+        let taxinfo = document.getElementsByClassName("tax-info");
+        for (info of taxinfo) {
+          if (info.style.display != "inline") {
+            info.style.display = "inline";
+          } else {
+            info.style.display = "none";
+          }
+        }
+      })
+    </script>
