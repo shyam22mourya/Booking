@@ -1,3 +1,7 @@
+/**
+ * This JavaScript code sets up a server using Express, connects to a MongoDB database, implements user
+ * authentication with Passport, and defines routes for listings, reviews, and users.
+ */
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -32,9 +36,9 @@ const store = MongoStore.create({
   touchAfter: 24 * 3600,
 });
 
-// store.on("error", () => {
-//   console.log("ERROR  in  MONGO SESSION STORE ")
-// });
+store.on("error", () => {
+  console.log("ERROR  in  MONGO SESSION STORE ")
+});
 
 const sectionOption = {
   // store
@@ -96,6 +100,7 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  console.log(req.user); 
   next();
 })
 
@@ -117,3 +122,4 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
 });
+

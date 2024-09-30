@@ -126,3 +126,7 @@
 
 
  /*  Filters  */
+
+ .tax-info{
+    display: none;
+ }
