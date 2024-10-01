@@ -49,6 +49,8 @@
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/listings/new"> Airbnb your home</a>
                 <% if(!currUser) {%>
+                    <% console.log(currUser);
+                     %>
                     <b> <a class="nav-link active" aria-current="page" href="/signup">Sign up</a></b>
                     <b> <a class="nav-link" href="/login"> Log-in </a></b>
                     <% } else{ %>
