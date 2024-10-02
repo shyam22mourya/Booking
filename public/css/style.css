@@ -130,3 +130,8 @@
  .tax-info{
     display: none;
  }
+
+ .image{
+     height: 9rem;
+     width: 15rem;
+ }

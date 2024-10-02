@@ -1,7 +1,4 @@
-/**
- * This JavaScript code sets up a server using Express, connects to a MongoDB database, implements user
- * authentication with Passport, and defines routes for listings, reviews, and users.
- */
+
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
@@ -15,7 +12,6 @@ const ejsMate = require("ejs-mate");
 
 const ExpressError = require("./utils/ExpressError.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 const db_URL = process.env.ATLASDB_URL;
 
 // passport 
@@ -29,7 +25,7 @@ const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 
 const store = MongoStore.create({
-  mongoUrl: MONGO_URL,
+  mongoUrl: process.env.ATLASDB_URL,
   crypto: {
     secret: process.env.SECRET,
   },
